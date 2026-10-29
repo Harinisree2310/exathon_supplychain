@@ -1,0 +1,7 @@
+material_id,material_code,material_name,category,sub_category,unit_of_measure
+M001,HR-STEEL-COIL,Hot-Rolled Steel Coil,Metals,Ferrous,MT
+M002,HDPE-GRANULES,HDPE Granules,Plastics,Polyolefin,kg
+M003,COPPER-WIRE-ROD,Copper Wire Rod,Metals,Non-Ferrous,kg
+M004,PALM-OIL-RBD,Refined Bleached Palm Oil,Chemicals,Oils,kg
+M005,ALUMINIUM-SHEET,Aluminium Sheet 2mm,Metals,Non-Ferrous,kg
+M006,PP-COMPOUND,Polypropylene Compound,Plastics,Polyolefin,kg

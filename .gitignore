@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Test / Coverage
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.mypy_cache/
+
+# Logs
+*.log
+logs/
+scripts/seed_err.txt
+scripts/seed_out.txt
+docs/test_results.txt
+
+# Secrets / env
+.env
+.env.local
+.env.production
+secrets/
+
+# Database artefacts
+*.exa
+*.dmp
+
+# Reports generated at runtime
+reports/*.pdf
+reports/*.xlsx

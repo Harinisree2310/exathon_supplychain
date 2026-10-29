@@ -1,0 +1,8 @@
+supplier_id,supplier_name,city,state,lead_time_days,quality_score,supplier_tier
+S001,AgroMet Industries,Mumbai,Maharashtra,14,8.5,PREFERRED
+S002,SteelCraft Pvt Ltd,Pune,Maharashtra,21,8.0,PREFERRED
+S003,ChemSource Gujarat,Surat,Gujarat,10,7.5,APPROVED
+S004,NorthWest Plastics,Ludhiana,Punjab,18,7.0,APPROVED
+S005,GreenField Polymers,Chennai,Tamil Nadu,25,6.5,BACKUP
+S006,RapidMetal Solutions,Jamshedpur,Jharkhand,7,9.0,APPROVED
+S007,Eastern Chemical Works,Kolkata,West Bengal,30,5.5,BACKUP

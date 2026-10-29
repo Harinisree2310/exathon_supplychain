@@ -1,0 +1,13 @@
+map_id,material_id,commodity_code,commodity_name,exposure_weight,mapping_basis,confidence
+CM001,M001,LME_HRC_STEEL,LME Hot-Rolled Coil Steel,0.85,Steel coil spot price directly drives input cost,HIGH
+CM002,M001,COKING_COAL,Coking Coal Index,0.15,Coking coal is ~15% of steel production cost,MEDIUM
+CM003,M002,NAPHTHA_SPOT,Naphtha Spot Price,0.7,HDPE is derived from naphtha feedstock via ethylene cracking,HIGH
+CM004,M002,BRENT_CRUDE,Brent Crude Oil,0.3,Crude oil is upstream feedstock for all petrochemicals,MEDIUM
+CM005,M003,LME_COPPER,LME Copper Cash Price,0.92,Copper wire rod price closely tracks LME copper spot,HIGH
+CM006,M003,BRENT_CRUDE,Brent Crude Oil,0.08,Energy cost component in copper smelting,LOW
+CM007,M004,PALM_OIL_BMD,Bursa Malaysia Palm Oil,0.9,RBD palm oil is refined from crude palm oil (CPO),HIGH
+CM008,M004,BRENT_CRUDE,Brent Crude Oil,0.1,Energy cost in refining process,LOW
+CM009,M005,LME_ALUMINIUM,LME Aluminium Cash Price,0.88,Aluminium sheet price closely tracks LME aluminium,HIGH
+CM010,M005,BRENT_CRUDE,Brent Crude Oil,0.12,Energy-intensive smelting process,MEDIUM
+CM011,M006,NAPHTHA_SPOT,Naphtha Spot Price,0.75,PP compound is a naphtha-derivative (propylene),HIGH
+CM012,M006,BRENT_CRUDE,Brent Crude Oil,0.25,Crude oil upstream feedstock,MEDIUM

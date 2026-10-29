@@ -1,0 +1,4 @@
+scenario_id,scenario_name,commodity_code,shock_pct,shock_direction,analysis_period_start,analysis_period_end,created_by
+SC001,Brent Crude +15% Shock,BRENT_CRUDE,15.0,UP,2025-07-01,2026-01-01,demo
+SC002,LME Copper +20% Shock,LME_COPPER,20.0,UP,2025-07-01,2026-01-01,demo
+SC003,Naphtha -10% Improvement,NAPHTHA_SPOT,10.0,DOWN,2025-07-01,2026-01-01,demo

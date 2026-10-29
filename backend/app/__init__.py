@@ -1,0 +1,1 @@
+"""SupplyLens backend application."""

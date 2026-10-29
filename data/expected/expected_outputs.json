@@ -1,0 +1,55 @@
+{
+  "total_spend_by_material": {
+    "M001": 4672020.7984,
+    "M002": 3145188.625,
+    "M003": 8604886.83,
+    "M004": 4695338.56,
+    "M005": 3870791.19,
+    "M006": 4258833.48
+  },
+  "m001_hhi": 8179.9274,
+  "m001_hhi_level": "HIGH",
+  "m001_dominant_supplier": "S001",
+  "m001_dominant_share_pct": 89.8743,
+  "sc001_impacts": [
+    {
+      "material_id": "M002",
+      "observed_spend_inr": 3145188.625,
+      "exposed_spend_inr": 943556.5875,
+      "incremental_cost_inr": 141533.4881
+    },
+    {
+      "material_id": "M003",
+      "observed_spend_inr": 8604886.83,
+      "exposed_spend_inr": 688390.9464,
+      "incremental_cost_inr": 103258.642
+    },
+    {
+      "material_id": "M004",
+      "observed_spend_inr": 4695338.56,
+      "exposed_spend_inr": 469533.856,
+      "incremental_cost_inr": 70430.0784
+    },
+    {
+      "material_id": "M005",
+      "observed_spend_inr": 3870791.19,
+      "exposed_spend_inr": 464494.9428,
+      "incremental_cost_inr": 69674.2414
+    },
+    {
+      "material_id": "M006",
+      "observed_spend_inr": 4258833.48,
+      "exposed_spend_inr": 1064708.37,
+      "incremental_cost_inr": 159706.2555
+    }
+  ],
+  "sc001_total_incremental": 544602.7054,
+  "sc002_impacts": [
+    {
+      "material_id": "M003",
+      "observed_spend_inr": 8604886.83,
+      "exposed_spend_inr": 7916495.8836,
+      "incremental_cost_inr": 1583299.1767
+    }
+  ]
+}
