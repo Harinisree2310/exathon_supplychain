@@ -6,6 +6,8 @@ SupplyLens helps small and medium-sized manufacturers understand how changes in 
 
 
 DEPLOYED LINK : https://supplylens-preview.onrender.com
+
+DEMO VIDEO LINK : https://drive.google.com/file/d/1HO2nnawlREzwSlBYppOvhyaFV1XIk5-0/view?usp=drivesdk
 ---
 
 ## Quick Start (5 minutes)
