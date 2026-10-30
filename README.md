@@ -5,7 +5,7 @@
 SupplyLens helps small and medium-sized manufacturers understand how changes in commodity prices or foreign-exchange rates affect their purchased materials and procurement costs — with every figure traceable back to its source data.
 
 
-DEPLOYED LINK : https://supplylens-preview.onrender.com
+DEPLOYED LINK : https://supplylens-preview.onrender.com  (frontend only)
 
 DEMO VIDEO LINK : https://drive.google.com/file/d/1HO2nnawlREzwSlBYppOvhyaFV1XIk5-0/view?usp=drivesdk
 ---
