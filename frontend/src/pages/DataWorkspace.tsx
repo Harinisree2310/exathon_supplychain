@@ -5,11 +5,12 @@ import { Database, Upload, CheckCircle, AlertTriangle, RefreshCw } from 'lucide-
 import toast from 'react-hot-toast'
 import DbBanner from '../components/DbBanner'
 import { getDataQuality, loadDemoData, uploadPurchases } from '../api/supplylens'
-import { formatINR } from '../utils/format'
+import { getErrorMessage } from '../utils/errors'
+import type { PurchaseUploadResult } from '../types'
 
 export default function DataWorkspace() {
   const qc = useQueryClient()
-  const [uploadResult, setUploadResult] = useState<any>(null)
+  const [uploadResult, setUploadResult] = useState<PurchaseUploadResult | null>(null)
 
   const { data: quality, error: qErr, isLoading } = useQuery({
     queryKey: ['quality'],
@@ -18,14 +19,11 @@ export default function DataWorkspace() {
 
   const loadDemoMutation = useMutation({
     mutationFn: (force: boolean) => loadDemoData(force),
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success('Demo data loaded successfully')
       qc.invalidateQueries()
     },
-    onError: (err: any) => {
-      const detail = err.response?.data?.detail ?? err.message
-      toast.error(`Failed to load demo data: ${detail}`)
-    },
+    onError: (error: unknown) => toast.error(`Failed to load demo data: ${getErrorMessage(error)}`),
   })
 
   const uploadMutation = useMutation({
@@ -36,9 +34,7 @@ export default function DataWorkspace() {
       if (data.success) toast.success(`Ingested: ${data.data?.accepted} rows accepted`)
       else toast.error(`Upload issue: ${data.message}`)
     },
-    onError: (err: any) => {
-      toast.error(`Upload failed: ${err.response?.data?.detail ?? err.message}`)
-    },
+    onError: (error: unknown) => toast.error(`Upload failed: ${getErrorMessage(error)}`),
   })
 
   const onDrop = useCallback((files: File[]) => {

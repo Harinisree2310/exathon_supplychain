@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { FileDown, FileJson, FileSpreadsheet } from 'lucide-react'
+import { FileJson, FileSpreadsheet } from 'lucide-react'
 import toast from 'react-hot-toast'
 import DbBanner from '../components/DbBanner'
 import { listScenarios, exportReport } from '../api/supplylens'
+import { getErrorMessage } from '../utils/errors'
 
 export default function Reports() {
   const [selectedScenario, setSelectedScenario] = useState('')
@@ -29,8 +30,8 @@ export default function Reports() {
       a.click()
       URL.revokeObjectURL(url)
       toast.success(`Report downloaded as ${fmt.toUpperCase()}`)
-    } catch (e: any) {
-      toast.error(e.response?.data?.detail ?? e.message)
+    } catch (error: unknown) {
+      toast.error(getErrorMessage(error))
     } finally {
       setExporting(false)
     }

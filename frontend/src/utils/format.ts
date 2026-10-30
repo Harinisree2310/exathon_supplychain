@@ -1,22 +1,26 @@
-/** Format a number as Indian Rupees. */
-export function formatINR(value: number | null | undefined, compact = false): string {
+/** Format an API numeric value as Indian Rupees. */
+export function formatINR(value: number | string | null | undefined, compact = false): string {
   if (value == null) return '—'
+  const amount = Number(value)
+  if (!Number.isFinite(amount)) return '—'
   if (compact) {
-    if (value >= 1_00_00_000) return `₹${(value / 1_00_00_000).toFixed(2)} Cr`
-    if (value >= 1_00_000)   return `₹${(value / 1_00_000).toFixed(2)} L`
-    if (value >= 1_000)      return `₹${(value / 1_000).toFixed(1)} K`
+    if (amount >= 1_00_00_000) return `₹${(amount / 1_00_00_000).toFixed(2)} Cr`
+    if (amount >= 1_00_000)   return `₹${(amount / 1_00_000).toFixed(2)} L`
+    if (amount >= 1_000)      return `₹${(amount / 1_000).toFixed(1)} K`
   }
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
     maximumFractionDigits: 0,
-  }).format(value)
+  }).format(amount)
 }
 
 /** Format a percentage. */
-export function formatPct(value: number | null | undefined, digits = 1): string {
+export function formatPct(value: number | string | null | undefined, digits = 1): string {
   if (value == null) return '—'
-  return `${value.toFixed(digits)}%`
+  const percentage = Number(value)
+  if (!Number.isFinite(percentage)) return '—'
+  return `${percentage.toFixed(digits)}%`
 }
 
 /** Concentration badge colour class. */

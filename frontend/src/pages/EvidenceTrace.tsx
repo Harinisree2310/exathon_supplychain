@@ -139,7 +139,7 @@ export default function EvidenceTrace() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {trace.evidence_chain['4_purchase_evidence'].map((p: any, i) => (
+                {trace.evidence_chain['4_purchase_evidence'].map((p, i) => (
                   <tr key={i}>
                     <td className="py-1 font-mono">{p.po_number}</td>
                     <td className="py-1">{p.purchase_date}</td>
@@ -172,7 +172,7 @@ export default function EvidenceTrace() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {trace.evidence_chain['6_supplier_alternatives'].map((s: any, i) => (
+                {trace.evidence_chain['6_supplier_alternatives'].map((s, i) => (
                   <tr key={i}>
                     <td className="py-1">{s.supplier_name}</td>
                     <td className="py-1 text-right">{s.unit_price_inr ? formatINR(s.unit_price_inr) : '—'}</td>

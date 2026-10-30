@@ -85,6 +85,14 @@ SUPPLYLENS schema (12 tables, 6 views, SQL queries)
 - **Database:** Exasol Personal (all aggregations, HHI, exposure calcs, supplier comparison)
 - **LLM:** Optional — deterministic fallback always available
 
+### Frontend branding
+
+The responsive app shell and shared component styles are in `frontend/src/index.css`.
+To rebrand a deployment, update the CSS custom properties in `:root` (brand,
+canvas, surface and sidebar colors); the navigation and page content remain
+unchanged. The frontend works on desktop and mobile without a separate theme
+dependency.
+
 ---
 
 ## Exasol Integration

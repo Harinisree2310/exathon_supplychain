@@ -9,7 +9,8 @@ import DbBanner from '../components/DbBanner'
 import {
   createScenario, listScenarios, calculateScenario, getExposureResults,
 } from '../api/supplylens'
-import { formatINR, formatPct } from '../utils/format'
+import { formatINR } from '../utils/format'
+import { getErrorMessage } from '../utils/errors'
 
 const COMMODITIES = [
   { code: 'BRENT_CRUDE',   label: 'Brent Crude Oil' },
@@ -58,7 +59,7 @@ export default function ScenarioLab() {
       qc.invalidateQueries({ queryKey: ['exposures'] })
       toast.success(`Calculated: ${data.length} material exposures`)
     },
-    onError: (e: any) => toast.error(e.response?.data?.detail ?? e.message),
+    onError: (error: unknown) => toast.error(getErrorMessage(error)),
   })
 
   const totalIncremental = exposures?.reduce(

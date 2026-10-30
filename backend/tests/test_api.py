@@ -181,6 +181,33 @@ class TestScenarioEndpoints:
         assert resp.status_code == 422
 
 
+class TestMarketSignalEndpoints:
+    def test_market_signals_use_schema_column_and_return_numeric_price(
+        self, client: TestClient
+    ) -> None:
+        from datetime import date
+
+        conn = MagicMock()
+        conn.execute.return_value.fetchall.return_value = [
+            ("signal-1", "BRENT_CRUDE", date(2026, 1, 1), Decimal("81.25"), "USD", "barrel", "SYNTHETIC")
+        ]
+        mock_db = MagicMock()
+        mock_db.__enter__.return_value = conn
+
+        with patch("app.api.v1.analytics.get_db", return_value=mock_db):
+            response = client.get(
+                "/api/v1/analytics/market-signals?commodity_code=BRENT_CRUDE"
+            )
+
+        assert response.status_code == 200
+        signal = response.json()[0]
+        assert signal["source"] == "SYNTHETIC"
+        assert signal["price"] == 81.25
+        assert isinstance(signal["price"], (int, float))
+        assert "signal_source FROM MARKET_SIGNALS" in conn.execute.call_args.args[0]
+        assert "LIMIT 180" in conn.execute.call_args.args[0]
+
+
 class TestSupplierEndpoints:
     def test_list_suppliers_avoids_reserved_state_alias(self, client: TestClient) -> None:
         mock_conn = MagicMock()

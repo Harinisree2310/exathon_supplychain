@@ -8,6 +8,7 @@ import type {
   MarketSignal,
   Material,
   OverviewStats,
+  PurchaseUploadResult,
   Recommendation,
   Scenario,
   SpendHistory,
@@ -29,7 +30,7 @@ export const getDataQuality = () =>
 export const uploadPurchases = (file: File) => {
   const form = new FormData()
   form.append('file', file)
-  return api.post('/api/v1/data/upload/purchases', form, {
+  return api.post<PurchaseUploadResult>('/api/v1/data/upload/purchases', form, {
     headers: { 'Content-Type': 'multipart/form-data' },
   }).then((r) => r.data)
 }

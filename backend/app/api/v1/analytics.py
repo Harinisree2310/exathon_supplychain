@@ -86,21 +86,21 @@ def list_suppliers() -> list[SupplierSchema]:
 @router.get("/market-signals", response_model=List[MarketSignalSchema])
 def list_market_signals(
     commodity_code: str | None = Query(default=None),
-    limit: int = Query(default=180, le=2000),
+    limit: int = Query(default=180, ge=1, le=2000),
 ) -> list[MarketSignalSchema]:
     try:
         with get_db() as conn:
             if commodity_code:
                 rows = conn.execute(
                     "SELECT signal_id, commodity_code, signal_date, price, "
-                    "currency, unit, source FROM MARKET_SIGNALS "
-                    "WHERE commodity_code = {cc} ORDER BY signal_date DESC LIMIT {lim}",
-                    {"cc": commodity_code, "lim": limit},
+                    f"currency, unit, signal_source FROM MARKET_SIGNALS "
+                    f"WHERE commodity_code = {{cc}} ORDER BY signal_date DESC LIMIT {limit}",
+                    {"cc": commodity_code},
                 ).fetchall()
             else:
                 rows = conn.execute(
                     "SELECT signal_id, commodity_code, signal_date, price, "
-                    "currency, unit, source FROM V_LATEST_MARKET_SIGNAL "
+                    "currency, unit, signal_source FROM V_LATEST_MARKET_SIGNAL "
                     "ORDER BY commodity_code"
                 ).fetchall()
         return [

@@ -114,6 +114,18 @@ export interface DataQuality {
   incomplete_quotations: number
 }
 
+export interface PurchaseUploadResult {
+  success: boolean
+  message: string
+  data: {
+    total_rows: number
+    accepted: number
+    rejected: number
+    duplicates: number
+    rejected_details?: { row: number; errors: string[] }[]
+  }
+}
+
 export interface OverviewStats {
   total_purchase_spend_inr: number
   exposed_material_count: number
@@ -140,9 +152,28 @@ export interface EvidenceTrace {
     '1_scenario': Record<string, unknown>
     '2_market_signal': Record<string, unknown>
     '3_material_mapping': Record<string, unknown>[]
-    '4_purchase_evidence': Record<string, unknown>[]
+    '4_purchase_evidence': {
+      line_id: string
+      po_number: string
+      purchase_date: string
+      quantity: number
+      unit_price_inr: number
+      total_value_inr: number
+      supplier_name: string
+    }[]
     '5_exposure_calculation': Record<string, unknown>
-    '6_supplier_alternatives': Record<string, unknown>[]
+    '6_supplier_alternatives': {
+      quote_id: string
+      supplier_name: string
+      unit_price_inr: number | null
+      min_order_qty: number | null
+      max_capacity_qty: number | null
+      lead_time_days: number | null
+      quality_score: number | null
+      valid_until: string | null
+      feasibility_status: string
+      used_as_recommended_alternative: boolean
+    }[]
   }
   disclaimer: string
 }

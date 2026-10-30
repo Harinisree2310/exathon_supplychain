@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import DbBanner from '../components/DbBanner'
 import { listRecommendations, recordDecision, generateRecommendation, listScenarios } from '../api/supplylens'
 import { formatINR, actionLabel, actionClass } from '../utils/format'
+import { getErrorMessage } from '../utils/errors'
 import clsx from 'clsx'
 
 export default function DecisionReview() {
@@ -27,7 +28,7 @@ export default function DecisionReview() {
       qc.invalidateQueries({ queryKey: ['recommendations'] })
       toast.success('Recommendation generated')
     },
-    onError: (e: any) => toast.error(e.response?.data?.detail ?? e.message),
+    onError: (error: unknown) => toast.error(getErrorMessage(error)),
   })
 
   const decisionMutation = useMutation({
@@ -38,7 +39,7 @@ export default function DecisionReview() {
       setSelectedRec('')
       setNotes('')
     },
-    onError: (e: any) => toast.error(e.response?.data?.detail ?? e.message),
+    onError: (error: unknown) => toast.error(getErrorMessage(error)),
   })
 
   const selected = recommendations?.find((r) => r.recommendation_id === selectedRec)

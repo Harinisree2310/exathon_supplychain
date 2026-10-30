@@ -8,7 +8,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from app.schemas.common import ExposureResultSchema
+from app.schemas.common import ConcentrationSchema, ExposureResultSchema
 
 
 class TestExposureCalculations:
@@ -66,6 +66,22 @@ class TestHHICalculation:
     def test_m001_expected_hhi(self, expected_outputs: dict) -> None:
         """M001 Python-computed HHI must be > 2500."""
         assert expected_outputs["m001_hhi"] > 2500
+
+    def test_concentration_decimals_serialize_as_json_numbers(self) -> None:
+        concentration = ConcentrationSchema(
+            material_id="M001",
+            material_name="Steel Coil",
+            hhi=Decimal("8180"),
+            concentration_level="HIGH",
+            supplier_count=1,
+            dominant_share_pct=Decimal("90"),
+        )
+
+        payload = concentration.model_dump(mode="json")
+
+        assert payload["hhi"] == 8180.0
+        assert isinstance(payload["hhi"], float)
+        assert payload["dominant_share_pct"] == 90.0
 
 
 class TestDataQuality:

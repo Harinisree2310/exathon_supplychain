@@ -59,6 +59,10 @@ class MarketSignalSchema(BaseModel):
     unit: Optional[str] = None
     source: str
 
+    @field_serializer("price", when_used="json")
+    def serialize_price(self, value: Decimal) -> float:
+        return float(value)
+
 
 class ExposureResultSchema(BaseModel):
     material_id: str
@@ -72,6 +76,13 @@ class ExposureResultSchema(BaseModel):
     incremental_cost_inr: Decimal
     line_count: Optional[int] = None
     distinct_supplier_count: Optional[int] = None
+
+    @field_serializer(
+        "exposure_weight", "observed_spend_inr", "exposed_spend_inr",
+        "incremental_cost_inr", when_used="json",
+    )
+    def serialize_numeric_values(self, value: Decimal) -> float:
+        return float(value)
 
 
 class SupplierQuoteSchema(BaseModel):
@@ -117,6 +128,10 @@ class ScenarioSchema(BaseModel):
     analysis_period_end: Optional[date] = None
     created_at: Optional[datetime] = None
 
+    @field_serializer("shock_pct", when_used="json")
+    def serialize_shock_pct(self, value: Decimal) -> float:
+        return float(value)
+
 
 class RecommendationSchema(BaseModel):
     recommendation_id: str
@@ -130,6 +145,10 @@ class RecommendationSchema(BaseModel):
     estimated_saving_inr: Optional[Decimal] = None
     saving_basis: Optional[str] = None
     evidence_summary: Optional[str] = None
+
+    @field_serializer("estimated_saving_inr", when_used="json")
+    def serialize_estimated_saving(self, value: Optional[Decimal]) -> Optional[float]:
+        return float(value) if value is not None else None
 
 
 class DecisionCreateSchema(BaseModel):
@@ -146,6 +165,10 @@ class ConcentrationSchema(BaseModel):
     concentration_level: str
     supplier_count: int
     dominant_share_pct: Decimal
+
+    @field_serializer("hhi", "dominant_share_pct", when_used="json")
+    def serialize_numeric_values(self, value: Decimal) -> float:
+        return float(value)
 
 
 class DataQualitySummarySchema(BaseModel):

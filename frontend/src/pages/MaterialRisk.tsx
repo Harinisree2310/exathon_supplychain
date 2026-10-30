@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import {
-  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
+  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from 'recharts'
 import DbBanner from '../components/DbBanner'
 import { getMaterials, getMarketSignals, getSpendHistory, getConcentration } from '../api/supplylens'
-import { formatINR, formatPct, concentrationClass } from '../utils/format'
+import { formatINR, concentrationClass } from '../utils/format'
 
 export default function MaterialRisk() {
   const [selectedMat, setSelectedMat] = useState('')
@@ -77,7 +77,7 @@ export default function MaterialRisk() {
           <div className="ml-auto flex items-center gap-2">
             <span className="text-xs text-gray-500">Concentration:</span>
             <span className={concentrationClass(matConc.concentration_level)}>
-              {matConc.concentration_level} (HHI {matConc.hhi.toFixed(0)})
+              {matConc.concentration_level} (HHI {Number(matConc.hhi).toFixed(0)})
             </span>
           </div>
         )}
