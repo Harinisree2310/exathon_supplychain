@@ -1,0 +1,6 @@
+po_number,purchase_date,material_code,supplier_name,quantity,unit_price_inr
+DEMO-PO-2026-001,2026-01-08,HR-STEEL-COIL,SteelCraft Pvt Ltd,12,54800
+DEMO-PO-2026-002,2026-01-12,HDPE-GRANULES,ChemSource Gujarat,850,112
+DEMO-PO-2026-003,2026-01-15,COPPER-WIRE-ROD,RapidMetal Solutions,420,812
+DEMO-PO-2026-004,2026-01-19,PP-COMPOUND,GreenField Polymers,700,126
+DEMO-PO-2026-005,2026-01-22,ALUMINIUM-SHEET,Eastern Chemical Works,160,248
