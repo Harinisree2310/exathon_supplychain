@@ -3,6 +3,8 @@
 > **ExaThon India 2026** | Open-source supply-chain analytics MVP powered by **Exasol Personal**
 
 SupplyLens helps small and medium-sized manufacturers understand how changes in commodity prices or foreign-exchange rates affect their purchased materials and procurement costs — with every figure traceable back to its source data.
+
+
 DEPLOYED LINK : https://supplylens-preview.onrender.com
 ---
 
