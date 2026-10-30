@@ -93,6 +93,22 @@ canvas, surface and sidebar colors); the navigation and page content remain
 unchanged. The frontend works on desktop and mobile without a separate theme
 dependency.
 
+### Static preview on Render
+
+The root `render.yaml` configures a static frontend preview. To deploy it, push
+the repository to GitHub, then in Render choose **New → Blueprint**, select this
+repository and branch, and apply the `render.yaml` blueprint. Render builds the
+React app and provides an HTTPS preview URL; later pushes to the connected
+branch can update the static site.
+
+This is a **frontend-only preview**. The analytics API and Exasol database are
+not deployed by this blueprint, so live data, uploads, scenario calculations,
+supplier comparisons, and reports are unavailable. The frontend sends API
+requests to its own origin, where this static preview has no API service.
+Do not treat this site as a production procurement system or enter real company
+data. A working full-stack deployment requires a separately hosted Exasol
+instance, a reachable backend, and authentication before the API is exposed.
+
 ---
 
 ## Exasol Integration
